@@ -44,8 +44,8 @@ steps:
     SonarCloud: 'sonarcloud'
     organization: 'pchmielecki87'
     scannerMode: 'MSBuild'
-    projectKey: 'sonarcloud-key'
-    projectName: 'sonarcloud-csharptest'
+    projectKey: 'pchmielecki87_CSharpTest'
+    projectName: 'CSharpTest'
 
 - task: DotNetCoreCLI@2
   displayName: '.NET build'
