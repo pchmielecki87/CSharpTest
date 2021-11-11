@@ -13,9 +13,22 @@ steps:
     includePreviewVersions: true
 
 - task: UseDotNet@2
+  displayName: 'Install .NET Core SDK for SonarCloud'
+  inputs:
+    version: '3.1.x'
+    performMultiLevelLookup: true
+    includePreviewVersions: true
+
+- task: UseDotNet@2
   displayName: 'Enforce .NET version'
   inputs:
     version: '6.0.x'
+    includePreviewVersions: true
+
+- task: UseDotNet@2
+  displayName: 'Enforce .NET version for SonarCloud'
+  inputs:
+    version: '3.1.x'
     includePreviewVersions: true
 
 - task: DotNetCoreCLI@2
