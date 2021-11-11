@@ -1,0 +1,47 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET Core SDK'
+  inputs:
+    version: 'latest'
+    performMultiLevelLookup: true
+    includePreviewVersions: true
+
+- task: UseDotNet@2
+  displayName: 'Enforce .NET version'
+  inputs:
+    version: 'latest'
+    includePreviewVersions: true
+
+- task: DotNetCoreCLI@2
+  displayName: '.NET restore'
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+    vstsFeed: '6a4298ff-d7e1-4cd2-b618-006a1fecb964'
+
+- task: DotNetCoreCLI@2
+  displayName: '.NET build'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish build artifact'
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Publish .NET app to Azure WebApp'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(63abcf25-b8df-4c76-8b31-5004c9ba37cd)'
+    appType: 'webApp'
+    WebAppName: 'DotNetSandbox'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
