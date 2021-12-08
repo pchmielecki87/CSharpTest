@@ -74,4 +74,4 @@ steps:
     azureSubscription: 'Pay-As-You-Go(63abcf25-b8df-4c76-8b31-5004c9ba37cd)'
     appType: 'webApp'
     WebAppName: 'DotNetSandbox'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/DotNet6_sandbox/**/*.zip'
