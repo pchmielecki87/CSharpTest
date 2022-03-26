@@ -35,9 +35,9 @@ steps:
   displayName: '.NET restore'
   inputs:
     command: 'restore'
+    projects: 'DotNet6_sandbox/*.csproj'
     feedsToUse: 'select'
-    # vstsFeed: '6a4298ff-d7e1-4cd2-b618-006a1fecb964'
-    workingDirectory: $(Agent.BuildDirectory)
+    vstsFeed: '8a3ff255-2089-42b6-807f-273433cc69ed/76f37645-2056-4109-b7c7-3121d1100832'
 
 - task: SonarCloudPrepare@1
   displayName: 'Prepare SonarCloud analysis'
@@ -47,7 +47,7 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'pchmielecki87_CSharpTest'
     projectName: 'CSharpTest'
-
+    
 - task: DotNetCoreCLI@2
   displayName: '.NET build'
   inputs:
