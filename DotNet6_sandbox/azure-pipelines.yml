@@ -36,7 +36,7 @@ steps:
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-    vstsFeed: '6a4298ff-d7e1-4cd2-b618-006a1fecb964'
+    # vstsFeed: '6a4298ff-d7e1-4cd2-b618-006a1fecb964'
     workingDirectory: $(Agent.BuildDirectory)
 
 - task: SonarCloudPrepare@1
