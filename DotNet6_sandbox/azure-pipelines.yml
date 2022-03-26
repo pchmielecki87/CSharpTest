@@ -70,9 +70,10 @@ steps:
     workingDirectory: 'DotNet6_sandbox'
 
 - task: AzureRmWebAppDeployment@4
-inputs:
-  ConnectionType: 'AzureRM'
-  azureSubscription: 'Pay-As-You-Go(63abcf25-b8df-4c76-8b31-5004c9ba37cd)'
-  appType: 'webApp'
-  WebAppName: 'DotNetSandbox'
-  packageForLinux: '$(System.DefaultWorkingDirectory)/DotNet6_sandbox/**/*.zip'
+  displayName: 'Publish Webapp to Azure'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(63abcf25-b8df-4c76-8b31-5004c9ba37cd)'
+    appType: 'webApp'
+    WebAppName: 'DotNetSandbox'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/DotNet6_sandbox/**/*.zip'
